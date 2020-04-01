@@ -1,0 +1,21 @@
+=flex($typeFlex, $alignFlex, $justifyFlex)
+  display: flex !important
+  flex-direction: $typeFlex !important
+  justify-content: $justifyFlex !important
+  align-content: $alignFlex !important
+  align-items: $alignFlex !important
+
+=shake()
+  animation: shake 0.5s
+  animation-iteration-count: infinite
+  @keyframes shake
+    0%
+      transform: rotate(-5deg)
+    25%
+      transform: rotate(0deg)
+    50%
+      transform: rotate(5deg)
+    75%
+      transform: rotate(0deg)
+    100%
+      transform: rotate(-5deg)

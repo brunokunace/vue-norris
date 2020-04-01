@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <fact v-for="fact in facts" v-bind="fact" :key="fact.id" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Fact from '@/components/Fact'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Fact
+  },
+  data: () => ({
+    facts: [
+      {
+        id: 'G-K6OGD0T-Cjy_5Y-x1pxw',
+        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
+        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
+        currentFact: 1,
+        totalFacts: 99,
+        active: false
+      },
+      {
+        id: 'G-K6OGD0T-Cjy_5Y-x2pxw',
+        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
+        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
+        currentFact: 2,
+        totalFacts: 99,
+        active: true
+      },
+      {
+        id: 'G-K6OGD0T-Cjy_5Y-x3pxw',
+        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
+        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
+        currentFact: 3,
+        totalFacts: 99,
+        active: false
+      }
+
+    ]
+  })
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+@import '@/assets/sass/_reset'
+#app
+  background-color: #ddd
+  width: 100vw
+  height: 100vh
+  +flex(column, center, center)
 </style>
