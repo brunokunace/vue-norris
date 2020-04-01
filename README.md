@@ -1,5 +1,7 @@
 # vue-norris
 
+[![Build Status](https://travis-ci.org/brunokunace/vue-norris.svg?branch=master)](https://travis-ci.org/brunokunace/vue-norris)
+
 ## Project setup
 ```
 yarn install
