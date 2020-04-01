@@ -1,6 +1,7 @@
 # vue-norris
 
 [![Build Status](https://travis-ci.org/brunokunace/vue-norris.svg?branch=master)](https://travis-ci.org/brunokunace/vue-norris)
+[![Coverage Status](https://coveralls.io/repos/github/brunokunace/vue-norris/badge.svg?branch=master)](https://coveralls.io/github/brunokunace/vue-norris?branch=master)
 
 ## Project setup
 ```
