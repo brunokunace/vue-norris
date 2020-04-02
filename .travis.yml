@@ -2,10 +2,9 @@ language: node_js
 node_js:
  - "node"
 cache: npm
-script: npm run test:unit
 script:
- - cat ./coverage/lcov.info | coveralls
-script: npm run build
+  - npm run coveralls
+  - npm run build
 
 deploy:
  provider: pages
