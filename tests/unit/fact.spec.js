@@ -34,12 +34,15 @@ describe('Fact Component', () => {
     const disabledClasses = wrapper.findAll('.disabled').length
     expect(disabledClasses).toEqual(3)
   })
-  // it('selectFact emit only if active false', () => {
-  //   const result = wrapper.vm.selectFact()
-  //   expect(result).toBe(undefined)
-  // })
   it('emit event select with payload with id', () => {
     wrapper.trigger('click')
     expect(wrapper.emitted('select')[0]).toEqual([props.id])
+  })
+  it('selectFact emit only if active false', () => {
+    wrapper.setProps({
+      active: true
+    })
+    const result = wrapper.vm.selectFact()
+    expect(result).toBe(undefined)
   })
 })
