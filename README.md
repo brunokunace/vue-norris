@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/brunokunace/vue-norris.svg?branch=master)](https://travis-ci.org/brunokunace/vue-norris)
 [![Coverage Status](https://coveralls.io/repos/github/brunokunace/vue-norris/badge.svg?branch=master)](https://coveralls.io/github/brunokunace/vue-norris?branch=master)
 
+<p align="center"><img width="200" src="https://i.imgur.com/tJMEEKi.png" alt="Vue Chuck Norris"></p>
+
 ## Project setup
 ```
 yarn install
