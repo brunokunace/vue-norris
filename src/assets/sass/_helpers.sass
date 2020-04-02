@@ -19,3 +19,29 @@
       transform: rotate(0deg)
     100%
       transform: rotate(-5deg)
+
+=square($size, $opacity, $top: auto, $right: auto, $left: auto, $bottom: auto)
+  position: absolute
+  top: $top
+  right: $right
+  left: $left
+  bottom: $bottom
+  width: $size+px
+  height: $size+px
+  transform: rotate(30deg)
+  background-color: $primary-darken
+  border-radius: 2px
+  opacity: $opacity
+  z-index: 10
+=elipsis($size, $opacity, $top: auto, $right: auto, $left: auto, $bottom: auto)
+  position: absolute
+  top: $top
+  right: $right
+  left: $left
+  bottom: $bottom
+  width: $size+px
+  height: $size+px
+  background-color: $primary-darken
+  border-radius: 50%
+  opacity: $opacity
+  z-index: 10

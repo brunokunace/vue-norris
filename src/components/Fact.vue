@@ -62,7 +62,7 @@ export default {
   computed: {
     avatarUrl () {
       const status = this.active ? 'active' : 'disabled'
-      return require(`@/assets/avatar-${status}.svg`)
+      return require(`@/assets/images/avatar-${status}.svg`)
     }
   }
 

@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <fact v-for="fact in facts" v-bind="fact" :key="fact.id" />
+    <container>
+      <template slot="right">
+        <fact v-for="fact in facts" v-bind="fact" :key="fact.id" />
+      </template>
+    </container>
   </div>
 </template>
 
 <script>
+import Container from '@/components/Container'
 import Fact from '@/components/Fact'
 export default {
   name: 'App',
   components: {
+    Container,
     Fact
   },
   data: () => ({
