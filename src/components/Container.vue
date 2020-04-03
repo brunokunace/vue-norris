@@ -31,23 +31,33 @@ export default {
 <style lang="sass" scoped>
 .container
   +flex(row, center, center)
+  flex-wrap: wrap
   width: 100%
   max-width: 990px
   height: 100%
-  max-height: 650px
+  max-height: 600px
+  @media (max-width: 700px)
+    max-height: 100%
   &_side
     +flex(column, center, center)
     width: 50%
+    min-width: 350px
     height: 100%
     position: relative
     &.left
       background-color: $background-container-left
       border-top-left-radius: 20px
       border-bottom-left-radius: 20px
+      @media (max-width: 700px)
+        height: 0
     &.right
       background: $background-container-right
       border-top-right-radius: 20px
       border-bottom-right-radius: 20px
+      @media (max-width: 700px)
+        width: 100%
+        height: 100%
+        border-radius: 0
     & .square1
       +square(100, 0.45, 50px, 0)
     & .square2

@@ -75,8 +75,8 @@ export default {
     +flex(row, center, center)
     border-radius: 9.5px
     background-color: $background-fact-active
-    width: 377px
-    min-height: 160px
+    width: 300px
+    min-height: 130px
     box-shadow: 5px 5px 10px rgba(0,0,0,0.3)
     transform: scale(1.1)
     z-index: 2
@@ -91,7 +91,7 @@ export default {
       &:hover
         transform: scale(1.03)
   &_avatar
-    padding: 0 6.5px 0 30px
+    padding: 0 6.5px 0 20px
     img
       width: 65px
       &:hover
