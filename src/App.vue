@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <container>
+      <template slot="left">
+        <search-fact />
+      </template>
       <template slot="right">
         <fact v-for="fact in facts" v-bind="fact" :key="fact.id" />
       </template>
@@ -11,11 +14,13 @@
 <script>
 import Container from '@/components/Container'
 import Fact from '@/components/Fact'
+import SearchFact from '@/components/SearchFact'
 export default {
   name: 'App',
   components: {
     Container,
-    Fact
+    Fact,
+    SearchFact
   },
   data: () => ({
     facts: [

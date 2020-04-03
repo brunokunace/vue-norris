@@ -5,19 +5,8 @@
     </div>
     <div class="container_side right">
       <slot name="right" />
-      <div class="square1" />
-      <div class="square2" />
-      <div class="square3" />
-      <div class="square4" />
-      <div class="square5" />
-      <div class="square6" />
-      <div class="square7" />
-      <div class="square8" />
-      <div class="square9" />
-      <div class="elipsis1" />
-      <div class="elipsis2" />
-      <div class="elipsis3" />
-      <div class="elipsis4" />
+      <div :class="`square${n}`" v-for="n in  9"  :key="`s-${n}`" />
+      <div :class="`elipsis${n}`" v-for="n in  4"  :key="`e-${n}`"/>
     </div>
   </div>
 </template>
