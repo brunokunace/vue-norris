@@ -1,24 +1,32 @@
 <template>
-  <div class="container">
-    <div class="container_side left">
+  <div class="frames">
+    <div class="frames_side left">
       <slot name="left" />
     </div>
-    <div class="container_side right">
+    <div class="frames_side right">
       <slot name="right" />
-      <div :class="`square${n}`" v-for="n in  9"  :key="`s-${n}`" />
-      <div :class="`elipsis${n}`" v-for="n in  4"  :key="`e-${n}`"/>
+      <div
+        v-for="n in 9"
+        :key="`s-${n}`"
+        :class="`square${n}`"
+      />
+      <div
+        v-for="n in 4"
+        :key="`e-${n}`"
+        :class="`elipsis${n}`"
+      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Container'
+  name: 'Frames'
 }
 </script>
 
 <style lang="sass" scoped>
-.container
+.frames
   +flex(row, center, center)
   flex-wrap: wrap
   width: 100%
@@ -28,25 +36,27 @@ export default {
   @media (max-width: 700px)
     max-height: 100%
   &_side
-    +flex(column, center, center)
     width: 50%
     min-width: 350px
     height: 100%
     position: relative
     &.left
-      background-color: $background-container-left
+      +flex(column, centert, flex-start)
+      background-color: $background-frames-left
       border-top-left-radius: 20px
       border-bottom-left-radius: 20px
       @media (max-width: 700px)
         height: 0
     &.right
-      background: $background-container-right
+      +flex(column, center, center)
+      background: $background-frames-right
       border-top-right-radius: 20px
       border-bottom-right-radius: 20px
       @media (max-width: 700px)
         width: 100%
         height: 100%
         border-radius: 0
+        background: $background-frames-right-inverted
     & .square1
       +square(100, 0.45, 50px, 0)
     & .square2

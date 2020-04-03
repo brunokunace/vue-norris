@@ -1,17 +1,17 @@
 <template>
   <div class="search_fact">
     <input
+      v-model="value"
       type="text"
       placeholder="Facts..."
       class="search_fact-input"
-      v-model="value"
       @keyup.enter="search"
-    />
+    >
     <img
       src="@/assets/images/search.svg"
       class="search_fact-icon"
       @click="search"
-    />
+    >
   </div>
 </template>
 
@@ -39,10 +39,12 @@ export default {
   border: 1px solid $primary
   border-radius: 3px
   padding: 9px 12px
+  background-color: $background-frames-left
   &-input
     width: 100%
     height: 100%
     border: none
+    font-size: 0.8em
   &-icon
     cursor: pointer
 </style>>

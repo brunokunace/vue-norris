@@ -1,26 +1,31 @@
 <template>
   <div id="app">
-    <container>
+    <frames>
       <template slot="left">
-        <search-fact />
+        <container-left />
       </template>
       <template slot="right">
-        <fact v-for="fact in facts" v-bind="fact" :key="fact.id" />
+        <!-- <container-left /> -->
+        <fact
+          v-for="fact in facts"
+          :key="fact.id"
+          v-bind="fact"
+        />
       </template>
-    </container>
+    </frames>
   </div>
 </template>
 
 <script>
-import Container from '@/components/Container'
+import Frames from '@/components/Frames'
 import Fact from '@/components/Fact'
-import SearchFact from '@/components/SearchFact'
+import ContainerLeft from '@/components/containers/ContainerLeft'
 export default {
   name: 'App',
   components: {
-    Container,
+    Frames,
     Fact,
-    SearchFact
+    ContainerLeft
   },
   data: () => ({
     facts: [
