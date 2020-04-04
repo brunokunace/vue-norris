@@ -4,6 +4,7 @@
     :for="forCheck"
     class="fact_container"
     :class="{disabled: !active}"
+    @click="selectFact"
   >
     <div class="fact_avatar">
       <img :src="avatarUrl">
@@ -70,6 +71,11 @@ export default {
     avatarUrl () {
       const status = this.active ? 'active' : 'disabled'
       return require(`@/assets/images/avatar-${status}.svg`)
+    }
+  },
+  methods: {
+    selectFact () {
+      this.$emit('select', this.currentFact)
     }
   }
 }
