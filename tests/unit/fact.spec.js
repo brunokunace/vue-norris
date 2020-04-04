@@ -34,4 +34,11 @@ describe('Fact Component', () => {
     const disabledClasses = wrapper.findAll('.disabled').length
     expect(disabledClasses).toEqual(3)
   })
+  it('selectFact emit only if active false', () => {
+    wrapper.setProps({
+      active: true
+    })
+    const result = wrapper.vm.selectFact()
+    expect(result).toBe(undefined)
+  })
 })
