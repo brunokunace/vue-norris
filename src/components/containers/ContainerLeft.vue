@@ -32,6 +32,8 @@ export default {
   height: 100%
   max-height: 272px
   padding: 45px 0
+  @media (max-width: 700px)
+    padding: 15px 0 0 0
   &-image
     +flex(column, center, center)
   &-subtitle

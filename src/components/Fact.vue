@@ -1,9 +1,17 @@
 <template>
-  <div class="fact_container" :class="{disabled: !active}" @click="selectFact">
+  <label
+    :id="id"
+    :for="forCheck"
+    class="fact_container"
+    :class="{disabled: !active}"
+  >
     <div class="fact_avatar">
-      <img :src="avatarUrl" />
+      <img :src="avatarUrl">
     </div>
-    <div class="fact_message" :class="{disabled: !active}">
+    <div
+      class="fact_message"
+      :class="{disabled: !active}"
+    >
       <span class="fact_message-text">
         {{ message }}
       </span>
@@ -12,22 +20,27 @@
           :href="link"
           class="fact_info-link"
           :class="{disabled: !active}"
+          :disabled="!active"
           target="_blank"
         >
           See more
-          </a>
+        </a>
         <span class="fact_info-counter">
           {{ currentFact }}/{{ totalFacts }}
         </span>
       </div>
     </div>
-  </div>
+  </label>
 </template>
 
 <script>
 export default {
   name: 'Fact',
   props: {
+    forCheck: {
+      type: String,
+      default: ''
+    },
     id: {
       type: String,
       default: ''
@@ -53,19 +66,12 @@ export default {
       default: true
     }
   },
-  methods: {
-    selectFact () {
-      if (this.active) { return }
-      this.$emit('select', this.id)
-    }
-  },
   computed: {
     avatarUrl () {
       const status = this.active ? 'active' : 'disabled'
       return require(`@/assets/images/avatar-${status}.svg`)
     }
   }
-
 }
 </script>
 
@@ -77,19 +83,17 @@ export default {
     background-color: $background-fact-active
     width: 300px
     min-height: 130px
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.3)
-    transform: scale(1.1)
-    z-index: 2
-    transition: all 0.2s ease-in-out
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.37)
+    position: absolute
+    margin: auto
+    left: 0
+    right: 0
+    transition: transform 0.4s ease
     &.disabled
       background-color: $primary-light
-      opacity: 0.7
-      transform: scale(1)
-      z-index: 1
-      box-shadow: none
       cursor: pointer
       &:hover
-        transform: scale(1.03)
+        background-color: $primary-hover
   &_avatar
     padding: 0 6.5px 0 20px
     img
@@ -118,6 +122,7 @@ export default {
       &.disabled
         color: $fact-message-disabled
         opacity: 0
+        pointer-events: none
     &-counter
       font-weight: bold
 </style>

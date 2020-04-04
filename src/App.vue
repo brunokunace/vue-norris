@@ -1,16 +1,15 @@
 <template>
   <div id="app">
     <frames>
-      <template slot="left">
+      <template
+        v-if="!isMobile"
+        slot="left"
+      >
         <container-left />
       </template>
       <template slot="right">
-        <!-- <container-left /> -->
-        <fact
-          v-for="fact in facts"
-          :key="fact.id"
-          v-bind="fact"
-        />
+        <container-left v-if="isMobile" />
+        <container-facts />
       </template>
     </frames>
   </div>
@@ -18,44 +17,36 @@
 
 <script>
 import Frames from '@/components/Frames'
-import Fact from '@/components/Fact'
+import ContainerFacts from '@/components/containers/ContainerFacts'
 import ContainerLeft from '@/components/containers/ContainerLeft'
 export default {
   name: 'App',
   components: {
     Frames,
-    Fact,
+    ContainerFacts,
     ContainerLeft
   },
   data: () => ({
-    facts: [
-      {
-        id: 'G-K6OGD0T-Cjy_5Y-x1pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 1,
-        totalFacts: 99,
-        active: false
-      },
-      {
-        id: 'G-K6OGD0T-Cjy_5Y-x2pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 2,
-        totalFacts: 99,
-        active: true
-      },
-      {
-        id: 'G-K6OGD0T-Cjy_5Y-x3pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 3,
-        totalFacts: 99,
-        active: false
-      }
-
-    ]
-  })
+    width: window.innerWidth
+  }),
+  computed: {
+    isMobile () {
+      return this.width <= 700
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize)
+    })
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.onResize)
+  },
+  methods: {
+    onResize () {
+      this.width = window.innerWidth
+    }
+  }
 }
 </script>
 
