@@ -1,8 +1,8 @@
 // #### GLOBALS ####
-$primary: #F16521
-$primary-light: #ED6E2D
-$primary-hover: #c45f2b
-$primary-darken: #D95129
+$primary: #5aa4cf
+$primary-light: lighten($primary, 10%)
+$primary-hover: darken($primary, 1%)
+$primary-darken: darken($primary, 5%)
 $title: #525256
 
 // #### FACTS ####
@@ -12,6 +12,6 @@ $fact-message-disabled: #FFFFFF
 $fact-border-disabled: #FFFFFF
 
 // #### FRAMES ####
-$background-frames-left: #ffffff
-$background-frames-right: transparent linear-gradient(44deg, #FEFFED 0%, $primary 100%) 0% 0% no-repeat
-$background-frames-right-inverted: transparent linear-gradient(15deg, #FCE2DA 0%, #FFFFFF 100%) 0% 0% no-repeat
+$background-frames-left: #FFFFFF
+$background-frames-right: transparent linear-gradient(44deg, #FFFFFF -10%, $primary 100%) 0% 0% no-repeat
+$background-frames-right-inverted: transparent linear-gradient(15deg, $primary -120%, #FFFFFF 100%) 0% 0% no-repeat
