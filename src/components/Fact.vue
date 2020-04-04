@@ -14,11 +14,11 @@
       :class="{disabled: !active}"
     >
       <span class="fact_message-text">
-        {{ message }}
+        {{ value }}
       </span>
       <div class="fact_info">
         <a
-          :href="link"
+          :href="url"
           class="fact_info-link"
           :class="{disabled: !active}"
           :disabled="!active"
@@ -46,11 +46,11 @@ export default {
       type: String,
       default: ''
     },
-    message: {
+    value: {
       type: String,
       default: ''
     },
-    link: {
+    url: {
       type: String,
       default: '#'
     },
@@ -88,7 +88,7 @@ export default {
     border-radius: 9.5px
     background-color: $background-fact-active
     width: 300px
-    min-height: 130px
+    height: 150px
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.37)
     position: absolute
     margin: auto
@@ -117,6 +117,11 @@ export default {
     &.disabled
       color: $fact-message-disabled
       border-left: 1px solid $fact-border-disabled
+    &-text
+      overflow-y: scroll
+      max-height: 100px
+      padding-right: 10px
+      margin-top: 5px
   &_info
     +flex(row, center, space-between)
     width: 100%

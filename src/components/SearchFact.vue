@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import store from '@/store'
 export default {
   name: 'SearchFact',
   data: () => ({
@@ -26,7 +27,7 @@ export default {
       if (!this.value) { return }
       const value = this.value
       this.value = ''
-      this.$emit('search', value)
+      store.commit('search', value)
     }
   }
 }

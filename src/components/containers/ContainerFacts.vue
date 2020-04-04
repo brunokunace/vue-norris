@@ -23,7 +23,9 @@
 </template>
 
 <script>
+import store from '@/store'
 import Fact from '@/components/Fact'
+import { initial, search } from '@/services/chuckApi'
 export default {
   name: 'ContainerFacts',
   components: {
@@ -31,45 +33,7 @@ export default {
   },
   data: () => ({
     checker: 1,
-    facts: [
-      {
-        id: 'G-K6OGD0T-Cjy_5Y-x1pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 1
-      },
-      {
-        id: 'G-K6OGD0T-Cjy_5Y-x2pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 2
-      },
-      {
-        id: 'G-K6OGD0T-Cjy_5Y-x3pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 3
-      },
-      {
-        id: 'G-K6OGDs0T-Cjy_5Y-x3pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 4
-      },
-      {
-        id: 'G-K6OGDw0T-Cjy_5Y-x3pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 5
-      },
-      {
-        id: 'G-K6OGDw0T-Cjya_5Y-x3pxw',
-        message: "Chuck Norris does not say 'thank you', that would imply you had the option to decline his request.",
-        link: 'https://api.chucknorris.io/jokes/hydtndocT6qyvBWxN7unTg',
-        currentFact: 6
-      }
-
-    ]
+    facts: []
   }),
   computed: {
     availableFacts () {
@@ -79,18 +43,33 @@ export default {
       if (this.checker === 1 || this.checker === 2) {
         start = 0
       }
-      if (this.checker === this.facts.length) {
+      if (this.checker === this.facts.length && this.checker !== 1) {
         begin = this.facts.slice(0, 1)
       }
       return [...this.facts.slice(start, end), ...begin]
     },
     lessThenSize () {
       return this.availableFacts.length > 2 ? 1 : 0
+    },
+    query () {
+      return store.state.query
     }
+  },
+  watch: {
+    query (value) {
+      console.log('watch', value)
+      this.getFacts(value)
+    }
+  },
+  async mounted () {
+    this.facts = await initial()
   },
   methods: {
     selectFact (currentFact) {
       this.checker = currentFact
+    },
+    async getFacts (query) {
+      this.facts = await search(query)
     }
   }
 }
